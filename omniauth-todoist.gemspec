@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'omniauth/todoist/version'
+require 'omniauth-todoist/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-todoist"
   spec.version       = Omniauth::Todoist::VERSION
   spec.authors       = ["Alex Timofeev"]
-  spec.email         = ["atimofeev@reactant.ru"]
+  spec.email         = ["alex@query-string.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Unofficial Todoist strategy for OmniAuth 1.0}
+  spec.description   = %q{Unofficial Todoist strategy for OmniAuth 1.0}
+  spec.homepage      = "https://github.com/query-string/omniauth-todoist"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
