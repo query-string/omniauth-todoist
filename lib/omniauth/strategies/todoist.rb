@@ -1,16 +1,31 @@
-require 'omniauth/strategies/oauth2'
+require "omniauth/strategies/oauth2"
 
 module OmniAuth
   module Strategies
     class Todoist < OmniAuth::Strategies::OAuth2
       option :name, "todoist"
+      option :scope, "data:read"
 
       option :client_options, {
-        site:          "https://developer.todoist.com",
+        site:          "https://todoist.com/",
         token_url:     "https://todoist.com/oauth/access_token",
         authorize_url: "https://todoist.com/oauth/authorize"
       }
-      option :scope, "data:read"
+
+      uid { raw_info['id'].to_s }
+
+      extra do
+        {
+          email:    raw_info["email"],
+          raw_info: raw_info
+        }
+      end
+
+      def raw_info
+        access_token.options[:mode] = :query
+        params = { token: access_token.token, sync_token: "*", resource_types: '["user"]' }
+        @raw_info ||= access_token.get("/API/v7/sync", params: params).parsed
+      end
     end
   end
 end
