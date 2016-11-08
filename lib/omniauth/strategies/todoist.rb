@@ -10,6 +10,7 @@ module OmniAuth
         token_url:     "https://todoist.com/api/access_tokens",
         authorize_url: "https://todoist.com/oauth/authorize"
       }
+      option :scope, "data:read"
     end
   end
 end
