@@ -7,7 +7,7 @@ module OmniAuth
 
       option :client_options, {
         site:          "https://developer.todoist.com",
-        token_url:     "https://todoist.com/api/access_tokens",
+        token_url:     "https://todoist.com/oauth/access_token",
         authorize_url: "https://todoist.com/oauth/authorize"
       }
       option :scope, "data:read"
