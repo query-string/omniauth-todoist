@@ -12,12 +12,22 @@ module OmniAuth
         authorize_url: "https://todoist.com/oauth/authorize"
       }
 
+      def authorize_params
+        super.tap do |params|
+          %w[scope client_options].each do |v|
+            if request.params[v]
+              params[v.to_sym] = request.params[v]
+            end
+          end
+        end
+      end
+
       uid { raw_info["user"]["id"].to_s }
 
       extra do
         {
           email:    raw_info["user"]["email"],
-          timezone: raw_info["user"]["tz_info"]["timezone"]
+          timezone: raw_info["user"]["tz_info"]["timezone"],
           raw_info: raw_info
         }
       end
