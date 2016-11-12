@@ -1,41 +1,21 @@
-# Omniauth::Todoist
+# OmniAuth Todoist
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omniauth/todoist`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is not official OmniAuth strategy for authenticating to Todoist. To
+use it, you'll need to sign up for an OAuth2 Application ID and Secret
+on the [Todoist App Management Console](https://todoist.com/app_console).
 
-TODO: Delete this and the text above, and describe your gem
+## Basic Usage
 
-## Installation
+    use OmniAuth::Builder do
+      provider :todoist, ENV['TODOIST_CLIENT_ID'], ENV['TODOIST_CLIENT_SECRET']
+    end
 
-Add this line to your application's Gemfile:
+## Scopes
 
-```ruby
-gem 'omniauth-todoist'
-```
+Todoist API lets you set scopes to provide granular access to different types of data:
 
-And then execute:
+    use OmniAuth::Builder do
+      provider :todoist, ENV['TODOIST_CLIENT_ID'], ENV['TODOIST_CLIENT_SECRET'], scope: "data:read,data:delete"
+    end
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install omniauth-todoist
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omniauth-todoist.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+By default, this strategy uses `data:read` scope. More info on [Scopes](https://developer.todoist.com/?shell#oauth).
