@@ -26,9 +26,10 @@ module OmniAuth
 
       extra do
         {
+          raw_info: raw_info,
           email:    raw_info["user"]["email"],
-          timezone: raw_info["user"]["tz_info"]["timezone"],
-          raw_info: raw_info
+          user:     raw_info["user"],
+          timezone: raw_info["user"]["tz_info"]["timezone"]
         }
       end
 
