@@ -13,11 +13,13 @@ describe OmniAuth::Strategies::Todoist do
     OmniAuth::Strategies::Todoist.new({})
   end
 
-  context "client options" do
+  describe "general" do
     it "should have correct name" do
       expect(subject.options.name).to eq("todoist")
     end
+  end
 
+  describe "endpoints" do
     it "should have correct site" do
       expect(subject.options.client_options.site).to eq("https://todoist.com/")
     end
