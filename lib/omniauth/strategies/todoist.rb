@@ -24,12 +24,17 @@ module OmniAuth
 
       uid { raw_info["user"]["id"].to_s }
 
+      info do
+        {
+          user:     raw_info["user"],
+          email:    raw_info["user"]["email"],
+          timezone: raw_info["user"]["tz_info"]["timezone"]
+        }
+      end
+
       extra do
         {
-          raw_info: raw_info,
-          email:    raw_info["user"]["email"],
-          user:     raw_info["user"],
-          timezone: raw_info["user"]["tz_info"]["timezone"]
+          raw_info: raw_info
         }
       end
 
